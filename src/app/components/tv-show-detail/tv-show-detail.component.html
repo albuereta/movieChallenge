@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div
+    class="mt-2 mb-2 img-conf"
+    [style.background-image]="
+      'url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/' +
+      tvShow.backdrop_path +
+      ')'
+    "
+  ></div>
+
+  <div class="container main-theme">
+    <div class="row">
+      <h4>{{ tvShow.name }}</h4>
+    </div>
+    <div class="row">
+      <p>{{ tvShow.overview }}</p>
+    </div>
+    <div class="row">
+      <h5>Recomendations</h5>
+      <div class="row mt-2 mb-2">
+        <div
+          *ngFor="let tvShow of similarTvShowsCards; let i = index"
+          class="col-sm-6 col-md-4 col-lg-3 mt-2"
+        >
+          <app-card [item]="tvShow"></app-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

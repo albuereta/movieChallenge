@@ -1,0 +1,19 @@
+<div class="container-fluid main-theme">
+  <div class="row mt-2 mb-2">
+    <app-carousel
+      [headerTitle]="headerCarouselTitle"
+      [items]="tvShowsTrendsCarousel"
+    ></app-carousel>
+  </div>
+  <div class="row" style="text-align: center">
+    <h4>{{ title }}</h4>
+  </div>
+  <div class="row mt-2 mb-2">
+    <div
+      *ngFor="let tvShow of tvShowsCards; let i = index"
+      class="col-sm-6 col-md-4 col-lg-3 mt-2"
+    >
+      <app-card [item]="tvShow" type="tvShow"></app-card>
+    </div>
+  </div>
+</div>

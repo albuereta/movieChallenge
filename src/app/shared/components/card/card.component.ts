@@ -20,6 +20,10 @@ export class CardComponent {
   constructor(private router: Router) {}
 
   navigate(): void {
-    this.router.navigate(['/' + this.item.entityType, this.item.id]);
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() =>
+        this.router.navigate(['/' + this.item.entityType, this.item.id])
+      );
   }
 }

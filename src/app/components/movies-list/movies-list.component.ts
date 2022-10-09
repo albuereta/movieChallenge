@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MovieDto } from 'src/app/models/movie.dto';
 import { CardDto } from 'src/app/shared/models/card.dto';
@@ -8,6 +15,17 @@ import { MovieDbApiService } from '../../services/movie-db-api.service';
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state(
+        'void',
+        style({
+          opacity: 0.2,
+        })
+      ),
+      transition('void <=> *', animate(1500)),
+    ]),
+  ],
 })
 export class MoviesListComponent implements OnInit {
   movies: MovieDto[];
@@ -51,6 +69,8 @@ export class MoviesListComponent implements OnInit {
       this.moviesTrendsCarousel.push({
         title: movieTrend.original_title,
         imgUrl: 'https://image.tmdb.org/t/p/w500/' + movieTrend.backdrop_path,
+        id: movieTrend.id,
+        entityType: 'movie',
       });
     });
   }

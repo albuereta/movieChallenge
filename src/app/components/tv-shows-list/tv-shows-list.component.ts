@@ -51,6 +51,8 @@ export class TvShowsListComponent implements OnInit {
       this.tvShowsTrendsCarousel.push({
         title: tvTrend.name,
         imgUrl: 'https://image.tmdb.org/t/p/w500/' + tvTrend.backdrop_path,
+        id: tvTrend.id,
+        entityType: 'tvShow',
       });
     });
   }

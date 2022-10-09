@@ -18,6 +18,10 @@ interface TvShowsApiDto extends BaseApiDto {
   results: TvShowDto[];
 }
 
+interface GenreApiDto {
+  genres: GenreDto[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -74,12 +78,12 @@ export class MovieDbApiService {
 
   async getMoviesGenresList(): Promise<GenreDto[]> {
     const result = await this.http
-      .get<GenreDto[]>(
+      .get<GenreApiDto>(
         this.urlApi + 'genre/movie/list?api_key=' + this.apikey + '&language=es'
       )
       .toPromise();
 
-    return result;
+    return result.genres;
   }
 
   async getTvShowsList(): Promise<TvShowDto[]> {
@@ -127,11 +131,11 @@ export class MovieDbApiService {
 
   async getTvShowsGenresList(): Promise<GenreDto[]> {
     const result = await this.http
-      .get<GenreDto[]>(
+      .get<GenreApiDto>(
         this.urlApi + 'genre/tv/list?api_key=' + this.apikey + '&language=es'
       )
       .toPromise();
 
-    return result;
+    return result.genres;
   }
 }

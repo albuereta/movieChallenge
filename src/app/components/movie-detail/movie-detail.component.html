@@ -8,15 +8,16 @@
     "
   ></div>
 
+  <app-card-detail
+    [title]="movie.title"
+    [date]="movie.release_date"
+    [genres]="genresMovieDetail"
+    [overview]="movie.overview"
+  ></app-card-detail>
+
   <div class="container main-theme">
-    <div class="row">
-      <h4>{{ movie.title }}</h4>
-    </div>
-    <div class="row">
-      <p>{{ movie.overview }}</p>
-    </div>
-    <div class="row">
-      <h5>Recomendations</h5>
+    <div class="row mt-4">
+      <h4>Recomendations</h4>
       <div class="row mt-2 mb-2">
         <div
           *ngFor="let movie of similarMoviesCards; let i = index"

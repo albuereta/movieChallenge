@@ -8,14 +8,15 @@
     "
   ></div>
 
+  <app-card-detail
+    [title]="tvShow.name"
+    [date]="tvShow.first_air_date"
+    [genres]="genresTvShowDetail"
+    [overview]="tvShow.overview"
+  ></app-card-detail>
+
   <div class="container main-theme">
-    <div class="row">
-      <h4>{{ tvShow.name }}</h4>
-    </div>
-    <div class="row">
-      <p>{{ tvShow.overview }}</p>
-    </div>
-    <div class="row">
+    <div class="row mt-4">
       <h5>Recomendations</h5>
       <div class="row mt-2 mb-2">
         <div

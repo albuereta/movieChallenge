@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GenreDto } from 'src/app/models/genre.dto';
 import { MovieDbApiService } from 'src/app/services/movie-db-api.service';
 import { CardDto } from 'src/app/shared/models/card.dto';
 import { MovieDto } from '../../models/movie.dto';
@@ -12,7 +13,7 @@ import { MovieDto } from '../../models/movie.dto';
 export class MovieDetailComponent implements OnInit {
   movie: MovieDto = {
     backdrop_path: '',
-    genre_ids: [],
+    genres: [],
     id: 0,
     original_language: '',
     original_title: '',
@@ -26,6 +27,8 @@ export class MovieDetailComponent implements OnInit {
   };
 
   similarMoviesCards: CardDto[] = [];
+  genresMovies: GenreDto[] = [];
+  genresMovieDetail: string = '';
 
   constructor(
     private movieDbService: MovieDbApiService,
@@ -36,6 +39,13 @@ export class MovieDetailComponent implements OnInit {
     const identifier = this.activatedRoute.snapshot.paramMap.get('id');
     if (identifier) {
       this.movie = await this.movieDbService.getMovieDetail(identifier);
+      this.genresMovies = await this.movieDbService.getMoviesGenresList();
+
+      this.genresMovies.forEach((genre) => {
+        if (this.movie.genres.find((g) => g.id === genre.id)) {
+          this.genresMovieDetail = this.genresMovieDetail + ' ' + genre.name;
+        }
+      });
 
       this.movie.similar.forEach((movie) => {
         this.similarMoviesCards.push({

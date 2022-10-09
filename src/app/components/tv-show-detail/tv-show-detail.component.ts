@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GenreDto } from 'src/app/models/genre.dto';
 import { MovieDbApiService } from 'src/app/services/movie-db-api.service';
 import { CardDto } from 'src/app/shared/models/card.dto';
 import { TvShowDto } from '../../models/tv-show.dto';
@@ -17,7 +18,7 @@ export class TvShowDetailComponent implements OnInit {
     number_of_episodes: 0,
     number_of_seasons: 0,
     backdrop_path: '',
-    genre_ids: [],
+    genres: [],
     id: 0,
     original_language: '',
     original_title: '',
@@ -29,6 +30,8 @@ export class TvShowDetailComponent implements OnInit {
   };
 
   similarTvShowsCards: CardDto[] = [];
+  genresTvShows: GenreDto[] = [];
+  genresTvShowDetail: string = '';
 
   constructor(
     private movieDbService: MovieDbApiService,
@@ -39,6 +42,13 @@ export class TvShowDetailComponent implements OnInit {
     const identifier = this.activatedRoute.snapshot.paramMap.get('id');
     if (identifier) {
       this.tvShow = await this.movieDbService.getTvShowDetail(identifier);
+      this.genresTvShows = await this.movieDbService.getTvShowsGenresList();
+
+      this.genresTvShows.forEach((genre) => {
+        if (this.tvShow.genres.find((g) => g.id === genre.id)) {
+          this.genresTvShowDetail = this.genresTvShowDetail + ' ' + genre.name;
+        }
+      });
 
       this.tvShow.similar.forEach((tvShow) => {
         this.similarTvShowsCards.push({

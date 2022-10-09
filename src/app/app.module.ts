@@ -13,6 +13,7 @@ import { TvShowsListComponent } from './components/tv-shows-list/tv-shows-list.c
 import { CardComponent } from './shared/components/card/card.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
+import { CardDetailComponent } from './shared/components/card-detail/card-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { ProgressBarComponent } from './shared/components/progress-bar/progress-
     CarouselComponent,
     ProgressBarComponent,
     HeaderComponent,
+    CardDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

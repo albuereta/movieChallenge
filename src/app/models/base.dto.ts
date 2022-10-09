@@ -1,6 +1,8 @@
+import { GenreDto } from './genre.dto';
+
 export interface BaseDto {
   backdrop_path: string;
-  genre_ids: number[];
+  genres: GenreDto[];
   id: number;
   original_language: string;
   original_title: string;

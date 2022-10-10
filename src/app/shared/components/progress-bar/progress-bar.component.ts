@@ -9,7 +9,7 @@ export class ProgressBarComponent implements OnInit {
   @Input() value: number = 0;
   valuePercentage: string = '';
   valuePercentageLabel: string = '';
-  colorClass: string = 'normal';
+  colorClass: string = 'regular';
   constructor() {}
 
   ngOnInit(): void {
@@ -18,6 +18,7 @@ export class ProgressBarComponent implements OnInit {
 
     this.valuePercentageLabel = tempValuetoString + '%';
     this.valuePercentage = 'width: ' + this.valuePercentageLabel;
+
     if (this.value * 10 > 50) {
       this.colorClass = 'good';
     }

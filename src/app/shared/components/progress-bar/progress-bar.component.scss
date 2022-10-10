@@ -1,11 +1,13 @@
-.normal {
-  background-color: crimson;
+@import "../../../themes/variables.scss";
+
+.regular {
+  background-color: var(--red-4);
 }
 
 .good {
-  background-color: goldenrod;
+  background-color: var(--orange-4);
 }
 
 .top {
-  background-color: forestgreen;
+  background-color: var(--green-4);
 }

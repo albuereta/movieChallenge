@@ -8,41 +8,5 @@
 }
 
 .img-conf {
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: brightness(50%);
-  height: 800px;
-}
-
-@media screen and (max-width: 1400px) {
-  .img-conf {
-    height: 800px;
-    background-position: right -250px top;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .img-conf {
-    height: 700px;
-    background-position: right -200px top;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .img-conf {
-    height: 600px;
-    background-position: right -150px top;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .img-conf {
-    height: 500px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .img-conf {
-    height: 400px;
-  }
+  filter: brightness(75%);
 }

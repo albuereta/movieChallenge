@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 import { appReducers, EffectsArray } from './app.reducer';
 import { HeaderComponent } from './components/header/header.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
@@ -45,6 +47,10 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     HttpClientModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot(EffectsArray),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

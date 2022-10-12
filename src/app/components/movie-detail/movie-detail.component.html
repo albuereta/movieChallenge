@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <img
+    src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{
+      movie.backdrop_path
+    }}"
+    class="d-block w-100 mt-2 mb-2 img-conf"
+    alt="{{ movie.title }}"
+  />
+
+  <app-card-detail
+    [title]="movie.title"
+    [date]="movie.release_date"
+    [genres]="genresMovieDetail"
+    [overview]="movie.overview"
+  ></app-card-detail>
+
+  <div class="container main-theme">
+    <div class="row mt-4">
+      <h4>Recomendations</h4>
+    </div>
+    <div class="row mt-2 mb-2">
+      <div
+        *ngFor="let movie of similarMoviesCards; let i = index"
+        class="col-sm-6 col-md-4 col-lg-3 mt-2 animate__animated animate__bounce animate__fadeIn"
+      >
+        <app-card [item]="movie"></app-card>
+      </div>
+    </div>
+  </div>
+</div>

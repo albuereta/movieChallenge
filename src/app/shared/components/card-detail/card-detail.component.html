@@ -1,0 +1,14 @@
+<div class="container main-theme">
+  <div class="row">
+    <h4 class="mt-2">{{ title }} ({{ date | date: "yyyy" }})</h4>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-badge *ngFor="let genre of genres">{{ genre }}</app-badge>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <h5>Resume</h5>
+    <p>{{ overview }}</p>
+  </div>
+</div>

@@ -1,0 +1,612 @@
+@import "./variables.scss";
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~src/assets/fonts/rubik/bold/rubik-bold.eot");
+  src: url("~src/assets/fonts/rubik/bold/rubik-bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("~src/assets/fonts/rubik/bold/rubik-bold.woff2") format("woff2"),
+    url("~src/assets/fonts/rubik/bold/rubik-bold.woff") format("woff"),
+    url("~src/assets/fonts/rubik/bold/rubik-bold.ttf") format("truetype"),
+    url("~src/assets/fonts/rubik/bold/rubik-bold.svg#rubik-bold") format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  src: url("~src/assets/fonts/rubik/medium/rubik-medium.eot");
+  src: url("~src/assets/fonts/rubik/medium/rubik-medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("~src/assets/fonts/rubik/medium/rubik-medium.woff2") format("woff2"),
+    url("~src/assets/fonts/rubik/medium/rubik-medium.woff") format("woff"),
+    url("~src/assets/fonts/rubik/medium/rubik-medium.ttf") format("truetype"),
+    url("~src/assets/fonts/rubik/medium/rubik-medium.svg#rubik-medium")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~src/assets/fonts/rubik/regular/rubik-regular.eot");
+  src: url("~src/assets/fonts/rubik/regular/rubik-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("~src/assets/fonts/rubik/regular/rubik-regular.woff2") format("woff2"),
+    url("~src/assets/fonts/rubik/regular/rubik-regular.woff") format("woff"),
+    url("~src/assets/fonts/rubik/regular/rubik-regular.ttf") format("truetype"),
+    url("~src/assets/fonts/rubik/regular/rubik-regular.svg#rubik-regular")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  src: url("~src/assets/fonts/rubik/light/Rubik-Light.eot");
+  src: url("~src/assets/fonts/rubik/light/Rubik-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("~src/assets/fonts/rubik/light/Rubik-Light.woff2") format("woff2"),
+    url("~src/assets/fonts/rubik/light/Rubik-Light.woff") format("woff"),
+    url("~src/assets/fonts/rubik/light/Rubik-Light.ttf") format("truetype");
+}
+
+.ft-1 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--grey-8);
+}
+.ft-2 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--grey-11);
+}
+.ft-3 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 14px !important;
+  font-weight: 300 !important;
+  color: var(--grey-5) !important;
+}
+.ft-4 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 14px !important;
+  font-weight: 300 !important;
+  color: var(--grey-6) !important;
+}
+.ft-5 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 14px;
+  font-weight: 500;
+  color: var(--grey-8);
+}
+.ft-6 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 14px;
+  font-weight: 400;
+  color: var(--marine-5) !important;
+}
+.ft-7 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 14px;
+  font-weight: 500;
+  color: $base-text-color-dark;
+}
+.ft-8 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 17px;
+  font-weight: 700;
+  color: var(--grey-11);
+}
+.ft-9 {
+  font-family: $font-family-base;
+  font-style: normal;
+  line-height: 15px;
+  font-weight: 300;
+  color: var(--grey-8);
+}
+.ft-10 {
+  font-family: $font-family-base;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+  color: var(--grey-11);
+}
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* MIXINS to include on components */
+
+@mixin h1_default {
+  font-family: $font-family-base;
+  font-size: 30px;
+  font-style: normal;
+  line-height: 38px;
+}
+
+@mixin h1_regular_default {
+  font-weight: normal;
+  @include h1_default;
+}
+
+@mixin h1_medium_default {
+  font-weight: 500;
+  @include h1_default;
+}
+
+@mixin h1_bold_default {
+  font-weight: bold;
+  @include h1_default;
+}
+
+@mixin h1_regular_underline {
+  @include h1_regular_default;
+  text-decoration: underline;
+}
+
+@mixin h1_medium_underline {
+  @include h1_medium_default;
+  text-decoration: underline;
+}
+
+@mixin h1_bold_underline {
+  @include h1_bold_default;
+  text-decoration: underline;
+}
+
+@mixin h1_regular_italic {
+  @include h1_regular_default;
+  font-style: italic;
+}
+
+@mixin h1_medium_italic {
+  @include h1_medium_default;
+  font-style: italic;
+}
+
+@mixin h1_bold_italic {
+  @include h1_bold_default;
+  font-style: italic;
+}
+
+@mixin h2_default {
+  font-family: $font-family-base;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 32px;
+}
+
+@mixin h2_regular_default {
+  font-weight: normal;
+  @include h2_default;
+}
+
+@mixin h2_medium_default {
+  font-weight: 500 !important;
+  @include h2_default;
+}
+
+@mixin h2_bold_default {
+  font-weight: bold;
+  @include h2_default;
+}
+
+@mixin h2_regular_underline {
+  @include h2_regular_default;
+  text-decoration: underline;
+}
+@mixin h2_medium_underline {
+  @include h2_medium_default;
+  text-decoration: underline;
+}
+@mixin h2_bold_underline {
+  @include h2_bold_default;
+  text-decoration: underline;
+}
+@mixin h2_regular_italic {
+  @include h2_regular_default;
+  font-style: italic;
+}
+@mixin h2_medium_italic {
+  @include h2_medium_default;
+  font-style: italic;
+}
+@mixin h2_bold_italic {
+  @include h2_bold_default;
+  font-style: italic;
+}
+
+@mixin h3_default {
+  font-family: $font-family-base;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 26px;
+}
+
+@mixin h3_regular_default {
+  font-weight: normal;
+  @include h3_default;
+}
+
+@mixin h3_medium_default {
+  font-weight: 500 !important;
+  @include h3_default;
+}
+
+@mixin h3_bold_default {
+  font-weight: bold;
+  @include h3_default;
+}
+
+@mixin h3_regular_underline {
+  @include h3_regular_default;
+  text-decoration: underline;
+}
+@mixin h3_medium_underline {
+  @include h3_medium_default;
+  text-decoration: underline;
+}
+@mixin h3_bold_underline {
+  @include h3_bold_default;
+  text-decoration: underline;
+}
+@mixin h3_regular_italic {
+  @include h3_regular_default;
+  font-style: italic;
+}
+@mixin h3_medium_italic {
+  @include h3_medium_default;
+  font-style: italic;
+}
+@mixin h3_bold_italic {
+  @include h3_bold_default;
+  font-style: italic;
+}
+
+@mixin p_default {
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 20px;
+}
+
+@mixin p_regular_default {
+  font-weight: normal;
+  @include p_default;
+}
+
+@mixin p_medium_default {
+  font-weight: 500;
+  @include p_default;
+}
+
+@mixin p_bold_default {
+  font-weight: bold;
+  @include p_default;
+}
+@mixin p_regular_underline {
+  @include p_regular_default;
+  text-decoration: underline;
+}
+@mixin p_medium_underline {
+  @include p_medium_default;
+  text-decoration: underline;
+}
+@mixin p_bold_underline {
+  @include p_bold_default;
+  text-decoration: underline;
+}
+@mixin p_regular_italic {
+  @include p_regular_default;
+  font-style: italic;
+}
+@mixin p_medium_italic {
+  @include p_medium_default;
+  font-style: italic;
+}
+@mixin p_bold_italic {
+  @include p_bold_default;
+  font-style: italic;
+}
+
+@mixin small_default {
+  font-family: $font-family-base;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 17px;
+}
+
+@mixin small_regular_default {
+  font-weight: normal;
+  @include small_default;
+}
+
+@mixin small_medium_default {
+  font-weight: 500;
+  @include small_default;
+}
+
+@mixin small_bold_default {
+  font-weight: bold;
+  @include small_default;
+}
+@mixin small_regular_underline {
+  @include small_regular_default;
+  text-decoration: underline;
+}
+@mixin small_medium_underline {
+  @include small_medium_default;
+  text-decoration: underline;
+}
+@mixin small_bold_underline {
+  @include small_bold_default;
+  text-decoration: underline;
+}
+@mixin small_regular_italic {
+  @include small_regular_default;
+  font-style: italic;
+}
+@mixin small_medium_italic {
+  @include small_medium_default;
+  font-style: italic;
+}
+@mixin small_bold_italic {
+  @include small_bold_default;
+  font-style: italic;
+}
+
+@mixin mini_default {
+  font-family: $font-family-base;
+  font-size: 10px;
+  font-style: normal;
+  line-height: 14px;
+}
+
+@mixin mini_regular_default {
+  font-weight: normal;
+  @include mini_default;
+}
+
+@mixin mini_medium_default {
+  font-weight: 500;
+  @include mini_default;
+}
+
+@mixin mini_bold_default {
+  font-weight: bold;
+  @include mini_default;
+}
+@mixin mini_regular_underline {
+  @include mini_regular_default;
+  text-decoration: underline;
+}
+@mixin mini_medium_underline {
+  @include mini_medium_default;
+  text-decoration: underline;
+}
+@mixin mini_bold_underline {
+  @include mini_bold_default;
+  text-decoration: underline;
+}
+@mixin mini_regular_italic {
+  @include mini_regular_default;
+  font-style: italic;
+}
+@mixin mini_medium_italic {
+  @include mini_medium_default;
+  font-style: italic;
+}
+@mixin mini_bold_italic {
+  @include mini_bold_default;
+  font-style: italic;
+}
+
+.h1_default {
+  @include h1_default;
+}
+.h1_regular_default {
+  @include h1_regular_default;
+}
+.h1_medium_default {
+  @include h1_medium_default;
+}
+.h1_bold_default {
+  @include h1_bold_default;
+}
+.h1_regular_underline {
+  @include h1_regular_underline;
+}
+.h1_medium_underline {
+  @include h1_medium_underline;
+}
+.h1_bold_underline {
+  @include h1_bold_underline;
+}
+.h1_regular_italic {
+  @include h1_regular_italic;
+}
+.h1_medium_italic {
+  @include h1_medium_italic;
+}
+.h1_bold_italic {
+  @include h1_bold_italic;
+}
+.h2_default {
+  @include h2_default;
+}
+.h2_regular_default {
+  @include h2_regular_default;
+}
+.h2_medium_default {
+  @include h2_medium_default;
+}
+.h2_bold_default {
+  @include h2_bold_default;
+}
+.h2_regular_underline {
+  @include h2_regular_underline;
+}
+.h2_medium_underline {
+  @include h2_medium_underline;
+}
+.h2_bold_underline {
+  @include h2_bold_underline;
+}
+.h2_regular_italic {
+  @include h2_regular_italic;
+}
+.h2_medium_italic {
+  @include h2_medium_italic;
+}
+.h2_bold_italic {
+  @include h2_bold_italic;
+}
+.h3_default {
+  @include h3_default;
+}
+.h3_regular_default {
+  @include h3_regular_default;
+}
+.h3_medium_default {
+  @include h3_medium_default;
+}
+.h3_bold_default {
+  @include h3_bold_default;
+}
+.h3_regular_underline {
+  @include h3_regular_underline;
+}
+.h3_medium_underline {
+  @include h3_medium_underline;
+}
+.h3_bold_underline {
+  @include h3_bold_underline;
+}
+.h3_regular_italic {
+  @include h3_regular_italic;
+}
+.h3_medium_italic {
+  @include h3_medium_italic;
+}
+.h3_bold_italic {
+  @include h3_bold_italic;
+}
+.p_default {
+  @include p_default;
+}
+.p_regular_default {
+  @include p_regular_default;
+}
+.p_medium_default {
+  @include p_medium_default;
+}
+.p_bold_default {
+  @include p_bold_default;
+}
+.p_regular_underline {
+  @include p_regular_underline;
+}
+.p_medium_underline {
+  @include p_medium_underline;
+}
+.p_bold_underline {
+  @include p_bold_underline;
+}
+.p_regular_italic {
+  @include p_regular_italic;
+}
+.p_medium_italic {
+  @include p_medium_italic;
+}
+.p_bold_italic {
+  @include p_bold_italic;
+}
+.small_default {
+  @include small_default;
+}
+.small_regular_default {
+  @include small_regular_default;
+}
+.small_medium_default {
+  @include small_medium_default;
+}
+.small_bold_default {
+  @include small_bold_default;
+}
+.small_regular_underline {
+  @include small_regular_underline;
+}
+.small_medium_underline {
+  @include small_medium_underline;
+}
+.small_bold_underline {
+  @include small_bold_underline;
+}
+.small_regular_italic {
+  @include small_regular_italic;
+}
+.small_medium_italic {
+  @include small_medium_italic;
+}
+.small_bold_italic {
+  @include small_bold_italic;
+}
+.mini_default {
+  @include mini_default;
+}
+.mini_regular_default {
+  @include mini_regular_default;
+}
+.mini_medium_default {
+  @include mini_medium_default;
+}
+.mini_bold_default {
+  @include mini_bold_default;
+}
+.mini_regular_underline {
+  @include mini_regular_underline;
+}
+.mini_medium_underline {
+  @include mini_medium_underline;
+}
+.mini_bold_underline {
+  @include mini_bold_underline;
+}
+.mini_regular_italic {
+  @include mini_regular_italic;
+}
+.mini_medium_italic {
+  @include mini_medium_italic;
+}
+.mini_bold_italic {
+  @include mini_bold_italic;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.dx-theme-generic-typography .dx-font-l,
+.dx-theme-generic-typography h2 {
+  font-weight: 500;
+  font-size: 24px;
+}

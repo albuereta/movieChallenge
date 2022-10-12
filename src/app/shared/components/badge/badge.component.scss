@@ -1,0 +1,9 @@
+@import "../../../themes/variables.scss";
+
+.genre {
+  font-size: $font-size-14px;
+  font-weight: 500;
+  color: var(--grey-1);
+  background-color: var(--yellow-4);
+  margin-left: var(--space-01);
+}

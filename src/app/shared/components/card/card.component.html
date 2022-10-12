@@ -1,0 +1,15 @@
+<div class="card item-card" (click)="navigate()">
+  <img
+    src="{{ item.imgUrl }}"
+    class="d-block w-100 img-card"
+    alt="{{ item.title }}"
+  />
+  <div class="card-body item-body">
+    <h5 class="card-title item-title">{{ item.title }}</h5>
+    <p class="card-text item-date">{{ item.date | date }}</p>
+    <app-progress-bar
+      *ngIf="item.votesValue"
+      [value]="item.votesValue"
+    ></app-progress-bar>
+  </div>
+</div>

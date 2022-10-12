@@ -1,0 +1,104 @@
+:root {
+  /* ---- grey scale ---- */
+  --white: #ffffff;
+  --black: #00020e;
+  --grey-1: #fbfbfc;
+  --grey-2: #f4f5f7;
+  --grey-3: #edeff1;
+  --grey-4: #e7e9ec;
+  --grey-5: #cfd4d9;
+  --grey-6: #b5bdc4;
+  --grey-7: #97a2ac;
+  --grey-8: #707e8c;
+  --grey-9: #48596a;
+  --grey-10: #26394c;
+  --grey-11: #04172a;
+
+  /* ---- red ---- */
+  --red-1: #fce8e8;
+  --red-2: #f7baba;
+  --red-3: #f07575;
+  --red-4: #e61a1a;
+  --red-5: #a11212;
+  --red-6: #5c0a0a;
+
+  /* ---- orange ---- */
+  --orange-1: #fcf4e8;
+  --orange-2: #f7deba;
+  --orange-3: #f0b775;
+  --orange-4: #e6841a;
+  --orange-5: #a15c12;
+  --orange-6: #5c340a;
+
+  /* ---- yellow ---- */
+  --yellow-1: #fcf9e8;
+  --yellow-2: #f7eeba;
+  --yellow-3: #f0dd75;
+  --yellow-4: #e6bd1a;
+  --yellow-5: #a18b12;
+  --yellow-6: #5c500a;
+
+  /* ---- green ---- */
+  --green-1: #e8fcef;
+  --green-2: #baf7cf;
+  --green-3: #75f09f;
+  --green-4: #22c359;
+  --green-5: #12a142;
+  --green-6: #0a5c26;
+
+  /* ---- cyan ---- */
+  --cyan-1: #e8fbfc;
+  --cyan-2: #baf3f7;
+  --cyan-3: #75e8f0;
+  --cyan-4: #1ad8e6;
+  --cyan-5: #1297a1;
+  --cyan-6: #0a565c;
+
+  /* ---- marine ---- */
+  --marine-1: #f0f8ff;
+  --marine-2: #c7e4ff;
+  --marine-3: #61b2ff;
+  --marine-4: #0080fa;
+  --marine-5: #004b93;
+  --marine-6: #0a2b5c;
+
+  /* ---- purple ---- */
+  --purple-1: #f7e8fc;
+  --purple-2: #e7baf7;
+  --purple-3: #cf75f0;
+  --purple-4: #ae1ae6;
+  --purple-5: #7a12a1;
+  --purple-6: #460a5c;
+
+  /* ---- magenta ---- */
+  --magenta-1: #fce8f5;
+  --magenta-2: #f7bae1;
+  --magenta-3: #f075c2;
+  --magenta-4: #e61a9a;
+  --magenta-5: #a1126c;
+  --magenta-6: #5c0a3e;
+}
+
+$base-accent: var(--marine-5);
+$base-accent-dark: var(--marine-6);
+
+// GENERAL BACKGROUND
+$base-bg: var(--white);
+$base-bg-layout: var(--grey-1);
+
+// SLIDE NAV
+$base-bg-dark: var(--grey-11);
+
+// GLOBAL SEARCH ENGINE
+$base-bg-gsearch-engine: var(--grey-8);
+
+// TEXT
+$base-text-color-dark: var(--white);
+$base-text-color-light: var(--grey-11);
+
+// ACTIONS
+$undo-action: var(--red-3);
+
+// THEME COLOR CORPORATIVE
+$color-corporate-1: #032541;
+$color-corporate-2: var(--grey-2);

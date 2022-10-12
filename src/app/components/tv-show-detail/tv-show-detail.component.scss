@@ -1,0 +1,12 @@
+@import "../../themes/variables.scss";
+
+.main-theme {
+  max-width: 960px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  background-color: var(--grey-1);
+  border-radius: var(--space-02);
+}
+
+.img-conf {
+  filter: brightness(75%);
+}

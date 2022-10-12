@@ -1,0 +1,26 @@
+@import "../../../themes/variables.scss";
+
+.item-card {
+  border-radius: var(--space-02);
+  border: none;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  text-align: center;
+  cursor: pointer;
+}
+
+.img-card {
+  border-radius: var(--space-02);
+}
+
+.item-body {
+  padding: var(--space-02);
+}
+
+.item-title {
+  font-size: $font-size-16px;
+  font-weight: 700;
+}
+
+.item-date {
+  font-size: $font-size-12px;
+}

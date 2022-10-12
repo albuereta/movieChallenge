@@ -31,7 +31,7 @@ export class TvShowDetailComponent implements OnInit {
 
   similarTvShowsCards: CardDto[] = [];
   genresTvShows: GenreDto[] = [];
-  genresTvShowDetail: string = '';
+  genresTvShowDetail: string[] = [];
 
   constructor(
     private movieDbService: MovieDbApiService,
@@ -46,7 +46,7 @@ export class TvShowDetailComponent implements OnInit {
 
       this.genresTvShows.forEach((genre) => {
         if (this.tvShow.genres.find((g) => g.id === genre.id)) {
-          this.genresTvShowDetail = this.genresTvShowDetail + ' ' + genre.name;
+          this.genresTvShowDetail.push(genre.name);
         }
       });
 

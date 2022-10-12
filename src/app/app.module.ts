@@ -16,6 +16,7 @@ import { CardComponent } from './shared/components/card/card.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { BadgeComponent } from './shared/components/badge/badge.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     HeaderComponent,
     CardDetailComponent,
     SpinnerComponent,
+    BadgeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

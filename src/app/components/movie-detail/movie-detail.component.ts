@@ -28,7 +28,7 @@ export class MovieDetailComponent implements OnInit {
 
   similarMoviesCards: CardDto[] = [];
   genresMovies: GenreDto[] = [];
-  genresMovieDetail: string = '';
+  genresMovieDetail: string[] = [];
 
   constructor(
     private movieDbService: MovieDbApiService,
@@ -43,7 +43,7 @@ export class MovieDetailComponent implements OnInit {
 
       this.genresMovies.forEach((genre) => {
         if (this.movie.genres.find((g) => g.id === genre.id)) {
-          this.genresMovieDetail = this.genresMovieDetail + ' ' + genre.name;
+          this.genresMovieDetail.push(genre.name);
         }
       });
 

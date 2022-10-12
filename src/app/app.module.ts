@@ -5,6 +5,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { appReducers, EffectsArray } from './app.reducer';
 import { HeaderComponent } from './components/header/header.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
@@ -15,10 +18,10 @@ import { BadgeComponent } from './shared/components/badge/badge.component';
 import { CardDetailComponent } from './shared/components/card-detail/card-detail.component';
 import { CardComponent } from './shared/components/card/card.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
+import { ItemDetailComponent } from './shared/components/item-detail/item-detail.component';
+import { ItemListComponent } from './shared/components/item-list/item-list.component';
 import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
-import { ItemListComponent } from './shared/components/item-list/item-list.component';
-import { ItemDetailComponent } from './shared/components/item-detail/item-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,13 @@ import { ItemDetailComponent } from './shared/components/item-detail/item-detail
     ItemListComponent,
     ItemDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot(EffectsArray),
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],

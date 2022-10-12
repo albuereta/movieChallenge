@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GenreDto } from '../models/genre.dto';
 import { ItemDto } from '../models/item.dto';
 import { MovieDto } from '../models/movie.dto';
@@ -11,7 +12,7 @@ interface BaseApiDto {
   total_results: number;
 }
 
-interface MoviesApiDto extends BaseApiDto {
+export interface MoviesApiDto extends BaseApiDto {
   results: MovieDto[];
 }
 
@@ -34,6 +35,7 @@ export class MovieDbApiService {
     this.urlApi = 'https://api.themoviedb.org/3/';
   }
 
+  /*
   async getMoviesList(): Promise<ItemDto[]> {
     let result: ItemDto[] = [];
     const response = await this.http
@@ -63,6 +65,16 @@ export class MovieDbApiService {
     });
 
     return result;
+  }
+  */
+
+  getMoviesList(): Observable<MoviesApiDto> {
+    return this.http.get<any>(
+      this.urlApi +
+        'movie/popular?api_key=' +
+        this.apikey +
+        '&language=es&page=1'
+    );
   }
 
   async getMoviesTrendsList(): Promise<ItemDto[]> {

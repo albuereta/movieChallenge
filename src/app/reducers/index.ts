@@ -1,1 +1,1 @@
-export * from './item.reducer';
+export * from './movie.reducer';

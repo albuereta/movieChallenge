@@ -1,19 +1,13 @@
 import { ActionReducerMap } from '@ngrx/store';
-import * as ItemReducer from './reducers';
+import { MoviesEffects } from './effects/movie.effects';
+import * as MoviesReducer from './reducers';
 
 export interface AppState {
-  items: ItemReducer.ItemsState;
+  movies: MoviesReducer.MoviesState;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-  items: ItemReducer.itemsReducer,
+  movies: MoviesReducer.moviesReducer,
 };
 
-export const EffectsArray: any[] = [
-  /*
-  AuthEffects,
-  UserEffects,
-  CategoriesEffects,
-  PostsEffects,
-  */
-];
+export const EffectsArray: any[] = [MoviesEffects];

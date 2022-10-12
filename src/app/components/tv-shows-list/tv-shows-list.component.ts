@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemDto } from 'src/app/models/item.dto';
 import { MovieDbApiService } from 'src/app/services/movie-db-api.service';
 import { CardDto } from 'src/app/shared/models/card.dto';
 import { CarouselDto } from 'src/app/shared/models/carousel.dto';
-import { TvShowDto } from '../../models/tv-show.dto';
 
 @Component({
   selector: 'app-tv-shows-list',
@@ -10,8 +10,8 @@ import { TvShowDto } from '../../models/tv-show.dto';
   styleUrls: ['./tv-shows-list.component.scss'],
 })
 export class TvShowsListComponent implements OnInit {
-  tvShows: TvShowDto[];
-  tvShowsTrends: TvShowDto[];
+  tvShows: ItemDto[];
+  tvShowsTrends: ItemDto[];
   title: string;
   tvShowsCards: CardDto[];
   tvShowsTrendsCarousel: CarouselDto[];
@@ -30,13 +30,13 @@ export class TvShowsListComponent implements OnInit {
 
     this.tvShows.forEach((tvShow) => {
       this.tvShowsCards.push({
-        date: new Date(tvShow.first_air_date),
+        date: new Date(tvShow.releaseDate),
         entityType: 'tvShow',
         id: tvShow.id,
         imgUrl:
-          'https://image.tmdb.org/t/p/w220_and_h330_face/' + tvShow.poster_path,
-        title: tvShow.name,
-        votesValue: tvShow.vote_average,
+          'https://image.tmdb.org/t/p/w220_and_h330_face/' + tvShow.posterPath,
+        title: tvShow.title,
+        votesValue: tvShow.voteAverage,
       });
     });
 
@@ -44,13 +44,13 @@ export class TvShowsListComponent implements OnInit {
     // 1) order by vote average
     // 2) return top 3 to carousel
     this.tvShowsTrends = this.tvShowsTrends
-      .sort((a, b) => b.vote_average - a.vote_average)
+      .sort((a, b) => b.voteAverage - a.voteAverage)
       .slice(0, 3);
 
     this.tvShowsTrends.forEach((tvTrend) => {
       this.tvShowsTrendsCarousel.push({
-        title: tvTrend.name,
-        imgUrl: 'https://image.tmdb.org/t/p/w500/' + tvTrend.backdrop_path,
+        title: tvTrend.title,
+        imgUrl: 'https://image.tmdb.org/t/p/w500/' + tvTrend.backdropPath,
         id: tvTrend.id,
         entityType: 'tvShow',
       });

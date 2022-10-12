@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GenreDto } from '../models/genre.dto';
+import { ItemDto } from '../models/item.dto';
 import { MovieDto } from '../models/movie.dto';
 import { TvShowDto } from '../models/tv-show.dto';
 
@@ -33,8 +34,9 @@ export class MovieDbApiService {
     this.urlApi = 'https://api.themoviedb.org/3/';
   }
 
-  async getMoviesList(): Promise<MovieDto[]> {
-    const result = await this.http
+  async getMoviesList(): Promise<ItemDto[]> {
+    let result: ItemDto[] = [];
+    const response = await this.http
       .get<MoviesApiDto>(
         this.urlApi +
           'movie/popular?api_key=' +
@@ -43,11 +45,29 @@ export class MovieDbApiService {
       )
       .toPromise();
 
-    return result.results;
+    response.results.forEach((movie) => {
+      result.push({
+        backdropPath: movie.backdrop_path,
+        genres: [],
+        id: movie.id,
+        originalLanguage: movie.original_language,
+        originalTitle: movie.original_title,
+        overview: movie.overview,
+        posterPath: movie.poster_path,
+        releaseDate: movie.release_date,
+        similar: [],
+        title: movie.title,
+        voteAverage: movie.vote_average,
+        voteCount: movie.vote_count,
+      });
+    });
+
+    return result;
   }
 
-  async getMoviesTrendsList(): Promise<MovieDto[]> {
-    const result = await this.http
+  async getMoviesTrendsList(): Promise<ItemDto[]> {
+    let result: ItemDto[] = [];
+    const response = await this.http
       .get<MoviesApiDto>(
         this.urlApi +
           'trending/movie/week?api_key=' +
@@ -56,7 +76,24 @@ export class MovieDbApiService {
       )
       .toPromise();
 
-    return result.results;
+    response.results.forEach((movie) => {
+      result.push({
+        backdropPath: movie.backdrop_path,
+        genres: [],
+        id: movie.id,
+        originalLanguage: movie.original_language,
+        originalTitle: movie.original_title,
+        overview: movie.overview,
+        posterPath: movie.poster_path,
+        releaseDate: movie.release_date,
+        similar: [],
+        title: movie.title,
+        voteAverage: movie.vote_average,
+        voteCount: movie.vote_count,
+      });
+    });
+
+    return result;
   }
 
   async getMovieDetail(movieId: string): Promise<MovieDto> {
@@ -86,8 +123,9 @@ export class MovieDbApiService {
     return result.genres;
   }
 
-  async getTvShowsList(): Promise<TvShowDto[]> {
-    const result = await this.http
+  async getTvShowsList(): Promise<ItemDto[]> {
+    let result: ItemDto[] = [];
+    const response = await this.http
       .get<TvShowsApiDto>(
         this.urlApi +
           'tv/popular?api_key=' +
@@ -96,11 +134,29 @@ export class MovieDbApiService {
       )
       .toPromise();
 
-    return result.results;
+    response.results.forEach((tvShow) => {
+      result.push({
+        backdropPath: tvShow.backdrop_path,
+        genres: [],
+        id: tvShow.id,
+        originalLanguage: tvShow.original_language,
+        originalTitle: tvShow.original_title,
+        overview: tvShow.overview,
+        posterPath: tvShow.poster_path,
+        releaseDate: tvShow.first_air_date,
+        similar: [],
+        title: tvShow.name,
+        voteAverage: tvShow.vote_average,
+        voteCount: tvShow.vote_count,
+      });
+    });
+
+    return result;
   }
 
-  async getTvShowsTrendsList(): Promise<TvShowDto[]> {
-    const result = await this.http
+  async getTvShowsTrendsList(): Promise<ItemDto[]> {
+    let result: ItemDto[] = [];
+    const response = await this.http
       .get<TvShowsApiDto>(
         this.urlApi +
           'trending/tv/week?api_key=' +
@@ -109,7 +165,24 @@ export class MovieDbApiService {
       )
       .toPromise();
 
-    return result.results;
+    response.results.forEach((tvShow) => {
+      result.push({
+        backdropPath: tvShow.backdrop_path,
+        genres: [],
+        id: tvShow.id,
+        originalLanguage: tvShow.original_language,
+        originalTitle: tvShow.original_title,
+        overview: tvShow.overview,
+        posterPath: tvShow.poster_path,
+        releaseDate: tvShow.first_air_date,
+        similar: [],
+        title: tvShow.name,
+        voteAverage: tvShow.vote_average,
+        voteCount: tvShow.vote_count,
+      });
+    });
+
+    return result;
   }
 
   async getTvShowDetail(tvShowId: string): Promise<TvShowDto> {

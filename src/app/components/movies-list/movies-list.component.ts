@@ -1,12 +1,5 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { MovieDto } from 'src/app/models/movie.dto';
+import { ItemDto } from 'src/app/models/item.dto';
 import { CardDto } from 'src/app/shared/models/card.dto';
 import { CarouselDto } from 'src/app/shared/models/carousel.dto';
 import { MovieDbApiService } from '../../services/movie-db-api.service';
@@ -15,21 +8,10 @@ import { MovieDbApiService } from '../../services/movie-db-api.service';
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      state(
-        'void',
-        style({
-          opacity: 0.2,
-        })
-      ),
-      transition('void <=> *', animate(1500)),
-    ]),
-  ],
 })
 export class MoviesListComponent implements OnInit {
-  movies: MovieDto[];
-  moviesTrends: MovieDto[];
+  movies: ItemDto[];
+  moviesTrends: ItemDto[];
   title: string;
   moviesCards: CardDto[];
   moviesTrendsCarousel: CarouselDto[];
@@ -48,13 +30,13 @@ export class MoviesListComponent implements OnInit {
 
     this.movies.forEach((movie) => {
       this.moviesCards.push({
-        date: new Date(movie.release_date),
+        date: new Date(movie.releaseDate),
         entityType: 'movie',
         id: movie.id,
         imgUrl:
-          'https://image.tmdb.org/t/p/w220_and_h330_face/' + movie.poster_path,
-        title: movie.original_title,
-        votesValue: movie.vote_average,
+          'https://image.tmdb.org/t/p/w220_and_h330_face/' + movie.posterPath,
+        title: movie.originalTitle,
+        votesValue: movie.voteAverage,
       });
     });
 
@@ -62,13 +44,13 @@ export class MoviesListComponent implements OnInit {
     // 1) order by vote average
     // 2) return top 3 to carousel
     this.moviesTrends = this.moviesTrends
-      .sort((a, b) => b.vote_average - a.vote_average)
+      .sort((a, b) => b.voteAverage - a.voteAverage)
       .slice(0, 3);
 
     this.moviesTrends.forEach((movieTrend) => {
       this.moviesTrendsCarousel.push({
-        title: movieTrend.original_title,
-        imgUrl: 'https://image.tmdb.org/t/p/w500/' + movieTrend.backdrop_path,
+        title: movieTrend.originalTitle,
+        imgUrl: 'https://image.tmdb.org/t/p/w500/' + movieTrend.backdropPath,
         id: movieTrend.id,
         entityType: 'movie',
       });
